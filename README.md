@@ -2,9 +2,7 @@
 ## Start
 train：
 
-+ run Run the Imgs_AH_Processing.py file to prepare the training images for adaptive histogram equalization for the GAHFNet dataset.
-
-+ just run "mytrain_VGG_CLAHE.py"
+just run "mytrain_VGG_CLAHE.py"
 
     1.Pseudo-label train:turn the "parser--train_path" to "Pseudo-label".
 
