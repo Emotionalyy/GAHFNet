@@ -7,7 +7,6 @@ from Code.utils.dataloader_LungInf import get_loader
 from Code.utils.utils import clip_gradient, adjust_lr, AvgMeter
 import torch.nn.functional as F
 from tqdm import tqdm
-import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -110,6 +109,31 @@ def train(train_loader, model, optimizer, epoch, train_save):
         torch.save(model.state_dict(), save_path + 'mynet_VGG_CLAHE-%d.pth' % (epoch + 1))
         print('[Saving Snapshot:]', save_path + 'mynet_VGG_CLAHE-%d.pth' % (epoch + 1))
 
+def adaptive_histogram_equalization():
+    from PIL import Image
+    import os
+
+    # 定义输入和输出目录路径
+    input_dir = r'.\Dataset\TrainingSet\Pseudo-label\Imgs\\'
+    output_dir = r'.\Dataset_CLAH\TrainingSet\Pseudo-label\Imgs\\'
+
+    # 遍历输入目录下的所有图片文件
+    for file_name in os.listdir(input_dir):
+        if file_name.endswith('.jpg') or file_name.endswith('.png'):
+            # 构建输入图像的完整路径
+            input_path = os.path.join(input_dir, file_name)
+
+            # 打开图像
+            image = Image.open(input_path)
+
+            # 进行自适应直方图增强
+            enhanced_image = image.equalize()
+
+            # 构建输出图像的完整路径
+            output_path = os.path.join(output_dir, file_name)
+
+            # 保存增强后的图像
+            enhanced_image.save(output_path)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -155,6 +179,9 @@ if __name__ == '__main__':
                         help='If you use custom save path, please edit `--is_semi=False` and `--is_pseudo=False`')
 
     opt = parser.parse_args()
+
+    # ---- adaptive_histogram_equalization ----
+    adaptive_histogram_equalization()
 
     # ---- build models ----
     torch.cuda.set_device(opt.gpu_device)
