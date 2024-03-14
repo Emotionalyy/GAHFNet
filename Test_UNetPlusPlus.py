@@ -22,10 +22,7 @@ def inference():
     opt = parser.parse_args()
 
     print("#" * 20, "\nStart Testing (Inf-Net)\n{}\nThis code is written for 'Inf-Net: Automatic COVID-19 Lung "
-                    "Infection Segmentation from CT Scans', 2020, arXiv.\n"
-                    "----\nPlease cite the paper if you use this code and dataset. "
-                    "And any questions feel free to contact me "
-                    "via E-mail (gepengai.ji@163.com)\n----\n".format(opt.backbone, opt), "#" * 20)
+                    "Infection Segmentation from CT Scans', 2020, arXiv.\n".format(opt.backbone, opt), "#" * 20)
 
     model = Network(in_channels=3, n_classes=1, feature_scale=4, is_deconv=True, is_batchnorm=True, is_ds=True)
     # model = torch.nn.DataParallel(model, device_ids=[0, 1]) # uncomment it if you have multiply GPUs.
