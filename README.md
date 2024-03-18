@@ -8,11 +8,11 @@ just run "mytrain_VGG_CLAHE.py"
 
 	Turn the "parser--is_semi" to "False", 
 
-	Turn the "parse--is_pseudo" to "Ture".
+	Turn the "parse--is_pseudo" to "True".
 
 2.Doctor-label train:turn the "parser--train_path" to "Doctor-label".
 
-	Turn the "parser--is_semi" to "Ture", 
+	Turn the "parser--is_semi" to "True", 
 
 	Turn the "parse--is_pseudo" to "False".    
 
