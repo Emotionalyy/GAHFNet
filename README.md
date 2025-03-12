@@ -47,4 +47,4 @@ Other models are similar
 
 If you find our work helpful, please cite it in your paper
 
-Welcome to exchange: 15320773024@163.com
+Welcome to exchange: yyyyaixue@163.com
